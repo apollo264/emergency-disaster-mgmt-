@@ -1,114 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        /* General Navbar Styling */
-        .border-b- {
-          border-bottom-width: 1px;
-        }
-      
-        .bg-amber-500 {
-          background-color: #F59E0B; /* Amber shade */
-        }
-      
-        .my-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 15px;
-        }
-      
-        .navbar {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-      
-        /* Logo */
-        h1 {
-          font-size: 2.5rem;
-          font-weight: 800;
-        }
-      
-        /* Desktop Links */
-        .flex-row a {
-          text-decoration: none;
-          color: black;
-          font-size: 1rem;
-          font-weight: 500;
-          padding: 1rem 1.5rem;
-          transition: color 0.3s ease, border-bottom 0.3s ease;
-        }
-      
-        .flex-row a:hover {
-          color: white;
-          border-bottom: 3px solid white;
-        }
-      
-        .flex-row .active {
-          color: white;
-          border-bottom: 3px solid white;
-        }
-      
-        /* User Icon */
-        .fa-circle-user {
-          font-size: 1.8rem;
-          color: white;
-          cursor: pointer;
-        }
-      
-        .fa-circle-user:hover {
-          color: #FF6347;
-        }
-      
-        /* Mobile Dropdown */
-        .dropdown-content {
-          background: #FFF;
-          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
-      
-        .dropdown-content li {
-          list-style: none;
-          padding: 0.8rem 1.5rem;
-          font-size: 1.2rem;
-        }
-      
-        .dropdown-content li a {
-          color: #293341;
-          text-decoration: none;
-        }
-      
-        .dropdown-content li a:hover {
-          color: #F17829;
-        }
-      
-        /* Responsive Layout */
-        @media (min-width: 1024px) {
-          .hidden {
-            display: none !important;
-          }
-          .flex {
-            display: flex;
-          }
-        }
-      
-        @media (max-width: 1023px) {
-          .lg\\:hidden {
-            display: block !important;
-          }
-        }
-      </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lost Person Registry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/your-fa-kit.js" crossorigin="anonymous"></script>
+    
     <style>
+        
         body {
             font-family: Arial, sans-serif;
             background-color: #000;
             color: #fff;
             text-align: center;
+            padding: 20px;
         }
         h1 {
             color: orange;
+            margin-bottom: 20px;
+            
         }
         form {
             background: #222;
@@ -116,11 +27,13 @@
             border-radius: 10px;
             display: inline-block;
             text-align: left;
+            width: 50%;
         }
         label, input, textarea {
             display: block;
             margin: 10px 0;
             width: 100%;
+            padding: 5px;
         }
         button {
             background-color: orange;
@@ -128,6 +41,7 @@
             padding: 10px;
             border: none;
             cursor: pointer;
+            width: 100%;
         }
         button:hover {
             background-color: #ff9800;
@@ -142,96 +56,59 @@
         th, td {
             border: 1px solid orange;
             padding: 10px;
+            text-align: center;
         }
         th {
             background: orange;
             color: black;
         }
+        img {
+            max-width: 100px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        input, textarea {
+    color: black !important; /* Force black text */
+    background-color: white !important; /* Ensure white background */
+    border: 1px solid orange;
+    padding: 8px;
+    border-radius: 5px;
+}
+
     </style>
 </head>
 <body>
-    <!-- Start of Navbar -->
-    <div class="border-b-[1px] bg-amber-500">
-        <div class="my-container">
-            <!-- For Large Device -->
-            <div class="hidden lg:flex items-center justify-between">
-                <!-- Logo -->
-                <a href='Home.html'>
-                    <h1 class="font-extrabold text-5xl text-white">edms<span class="text-red-500">.</span></h1>
-                </a>
 
-                <!-- Nav links for medium and large devices -->
-                <div class="flex flex-row items-center justify-between gap-3 md:gap-0">
-                    <!-- active link style -->
-                    <a href="Home.html" class="text-white h-full py-5 px-6 border-b-amber-500 hover:border-b-white border-b-[3px]
-                    hover:text-white transition duration-500">Home</a>
-                    <!-- inactive link styles -->
-                    <a href="Shelter_and_Areas.html" class="text-black h-full py-5 px-6 border-b-amber-500 hover:border-b-white border-b-[3px]
-                    hover:text-white transition duration-500">Shelters & Areas</a>
-                    <a href="Social.html" class="text-black h-full py-5 px-6 border-b-amber-500 hover:border-b-white border-b-[3px]
-                    hover:text-white transition duration-500">Social</a>
-                    <a href="Faq.html" class="text-black h-full py-5 px-6 border-b-amber-500 hover:border-b-white border-b-[3px]
-                    hover:text-white transition duration-500">FAQ</a>
-                    <a href="lostperson.html" class="text-black h-full py-5 px-6 border-b-amber-500 hover:border-b-white border-b-[3px]
-                    hover:text-white transition duration-500">Lost person registry</a>
-                </div>
-
-                <!-- user icon  -->
-                <div class="flex justify-center items-center text-[18px]">
-                    <div class="tooltip tooltip-left" data-tip="Profile">
-                        <a href="Profile.html" class="hover:text-white transition duration-300">
-                            <i class="fa-regular fa-circle-user"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- For Medium and small devices -->
-            <div class="navbar bg-base-100 lg:hidden bg-amber-500 min-h-[100px]">
-                <div class="navbar-start">
-                    <div class="dropdown">
-                        <label tabindex="0" class="btn btn-ghost btn-circle">
-                            <i class="fa-solid fa-bars text-[40px]"></i>
-                        </label>
-
-                        <ul tabindex="0"
-                            class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-[400px] flex flex-col gap-5 p-5">
-                            <li><a href="Home.html"
-                                    class="text-[40px] text-[#F17829] block border-b-[1px] p-3 hover:text-[#F17829] transition duration-500">Homepage</a>
-                            </li>
-                            <li><a href="Shelter_and_Areas.html"
-                                    class="text-[40px] text-[#293341] block border-b-[1px] p-3 hover:text-[#F17829] transition duration-500">Shelters
-                                    & Areas</a></li>
-                            <li><a href="Social.html"
-                                    class="text-[40px] text-[#293341] block border-b-[1px] p-3 hover:text-[#F17829] transition duration-500">Social</a>
-                            </li>
-                            <li><a href="Faq.html"
-                                    class="text-[40px] text-[#293341] block border-b-[1px] p-3 hover:text-[#F17829] transition duration-500">FAQ</a>
-                            </li>
-                            <li><a href="lostperson.html"
-                                class="text-[40px] text-[#293341] block border-b-[1px] p-3 hover:text-[#F17829] transition duration-500">Lost Person Directory</a>
-                        </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="navbar-center">
-                    
-                        <a href='Home.html'>
-                            <h1 class="font-extrabold text-[50px] text-white">edms<span class="text-red-500">.</span>
-                            </h1>
-                        </a>
-                    
-                </div>
-                <div class="navbar-end">
-                    <a href="Profile.html" class="hover:text-[#F17829] transition duration-300">
-                        <i class="fa-regular fa-circle-user text-[40px]"></i>
-                    </a>
-                </div>
-            </div>
+    <!-- Navbar -->
+    <nav class="bg-amber-500 py-4 px-6 flex justify-between items-center">
+        <a href="Home.html">
+            <h1 class="text-white text-3xl font-extrabold">edms<span class="text-red-500">.</span></h1>
+        </a>
+        <div class="hidden lg:flex space-x-6">
+            <a href="Home.html" class="text-white hover:text-gray-300">Home</a>
+            <a href="Shelter_and_Areas.html" class="text-black hover:text-white">Shelters & Areas</a>
+            <a href="Social.html" class="text-black hover:text-white">Social</a>
+            <a href="Faq.html" class="text-black hover:text-white">FAQ</a>
+            <a href="lostperson.html" class="text-black hover:text-white">Lost Person Registry</a>
         </div>
+        <div class="lg:hidden">
+            <button onclick="toggleMenu()" class="text-white text-2xl"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden bg-amber-500 p-4">
+        <a href="Home.html" class="block text-white py-2">Home</a>
+        <a href="Shelter_and_Areas.html" class="block text-black py-2">Shelters & Areas</a>
+        <a href="Social.html" class="block text-black py-2">Social</a>
+        <a href="Faq.html" class="block text-black py-2">FAQ</a>
+        <a href="lostperson.html" class="block text-black py-2">Lost Person Registry</a>
     </div>
-    <!-- End of Navbar -->
+
     <h1>Lost Person Registry</h1>
+
+    <!-- Form Section -->
     <form id="registryForm">
         <label for="name">Name:</label>
         <input type="text" id="name" required>
@@ -251,6 +128,7 @@
         <button type="button" onclick="addEntry()">Submit</button>
     </form>
 
+    <!-- Table Section -->
     <table id="registryTable">
         <thead>
             <tr>
@@ -264,33 +142,43 @@
         <tbody></tbody>
     </table>
 
+    <!-- JavaScript -->
     <script>
-       function addEntry() {
-    const table = document.getElementById("registryTable").getElementsByTagName('tbody')[0];
-    const row = table.insertRow();
-    
-    const name = document.getElementById("name").value;
-    const age = document.getElementById("age").value;
-    const location = document.getElementById("location").value;
-    const description = document.getElementById("description").value;
-    const photoInput = document.getElementById("photo");
-    
-    row.insertCell(0).innerText = name;
-    row.insertCell(1).innerText = age;
-    row.insertCell(2).innerText = location;
-    row.insertCell(3).innerText = description;
-    const photoCell = row.insertCell(4);
-    
-    if (photoInput.files.length > 0) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            photoCell.innerHTML = `<img src="${e.target.result}" width="100">`;
-        };
-        reader.readAsDataURL(photoInput.files[0]);
-    } else {
-        photoCell.innerText = "No image";
-    }
-}
+        function toggleMenu() {
+            const menu = document.getElementById("mobileMenu");
+            menu.classList.toggle("hidden");
+        }
+
+        function addEntry() {
+            const table = document.getElementById("registryTable").getElementsByTagName('tbody')[0];
+            const row = table.insertRow();
+            
+            const name = document.getElementById("name").value;
+            const age = document.getElementById("age").value;
+            const location = document.getElementById("location").value;
+            const description = document.getElementById("description").value;
+            const photoInput = document.getElementById("photo");
+            
+            row.insertCell(0).innerText = name;
+            row.insertCell(1).innerText = age;
+            row.insertCell(2).innerText = location;
+            row.insertCell(3).innerText = description;
+            const photoCell = row.insertCell(4);
+            
+            if (photoInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    photoCell.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image">`;
+                };
+                reader.readAsDataURL(photoInput.files[0]);
+            } else {
+                photoCell.innerText = "No image";
+            }
+
+            // Reset form
+            document.getElementById("registryForm").reset();
+        }
     </script>
+
 </body>
 </html>
