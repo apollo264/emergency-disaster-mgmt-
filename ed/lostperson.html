@@ -125,6 +125,12 @@
         <label for="photo">Upload Photo:</label>
         <input type="file" id="photo" accept="image/*">
         
+<<<<<<< Updated upstream
+=======
+        <label for="contact">Contact Number:</label>
+        <input type="tel" id="contact" required>
+        
+>>>>>>> Stashed changes
         <button type="button" onclick="addEntry()">Submit</button>
     </form>
 
@@ -137,6 +143,10 @@
                 <th>Last Seen Location</th>
                 <th>Description</th>
                 <th>Photo</th>
+<<<<<<< Updated upstream
+=======
+                <th>Contact Number</th>
+>>>>>>> Stashed changes
             </tr>
         </thead>
         <tbody></tbody>
@@ -158,6 +168,10 @@
             const location = document.getElementById("location").value;
             const description = document.getElementById("description").value;
             const photoInput = document.getElementById("photo");
+<<<<<<< Updated upstream
+=======
+            const contact = document.getElementById("contact").value;
+>>>>>>> Stashed changes
             
             row.insertCell(0).innerText = name;
             row.insertCell(1).innerText = age;
@@ -175,10 +189,19 @@
                 photoCell.innerText = "No image";
             }
 
+<<<<<<< Updated upstream
+=======
+            row.insertCell(5).innerText = contact;
+
+>>>>>>> Stashed changes
             // Reset form
             document.getElementById("registryForm").reset();
         }
     </script>
 
 </body>
+<<<<<<< Updated upstream
 </html>
+=======
+</html>
+>>>>>>> Stashed changes

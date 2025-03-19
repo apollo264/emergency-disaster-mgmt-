@@ -23,36 +23,129 @@
     	<script src="https://kit.fontawesome.com/f13afb77f1.js" crossorigin="anonymous"></script>
     
     </head>
+    <head>
+        <!-- Remove the old script tag -->
+        <script>
+            // Initialize and load Google Maps API
+            function loadGoogleMapsScript() {
+                const script = document.createElement('script');
+                // For testing/development, using a temporary API key. Replace with your own API key in production
+                script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=places";
+                script.async = true;
+                script.defer = true;
+                script.onload = initMap;
+                script.onerror = function() {
+                    const mapDiv = document.getElementById('map');
+                    mapDiv.innerHTML = '<div class="alert alert-error">Failed to load Google Maps. Please check your internet connection.</div>';
+                };
+                document.head.appendChild(script);
+            }
+
+            // Initialize map once script is loaded
+            function initMap() {
+                try {
+                    const defaultLocation = { lat: 19.0760, lng: 72.8777 }; // Mumbai coordinates
+                    const mapElement = document.getElementById('map');
+                    
+                    if (!mapElement) {
+                        console.error('Map element not found');
+                        return;
+                    }
+
+                    const map = new google.maps.Map(mapElement, {
+                        zoom: 12,
+                        center: defaultLocation,
+                        styles: [
+                            {
+                                "featureType": "poi",
+                                "elementType": "labels",
+                                "stylers": [{"visibility": "off"}]
+                            }
+                        ]
+                    });
+
+                    const marker = new google.maps.Marker({
+                        position: defaultLocation,
+                        map: map,
+                        title: "Selected Location",
+                        draggable: true
+                    });
+
+                    const locationInput = document.getElementById('locationInput');
+                    const autocomplete = new google.maps.places.Autocomplete(locationInput, {
+                        types: ['geocode'],
+                        componentRestrictions: { country: 'in' }
+                    });
+
+                    autocomplete.addListener('place_changed', function() {
+                        const place = autocomplete.getPlace();
+                        if (!place.geometry) {
+                            console.error('No location details available for input: ' + place.name);
+                            return;
+                        }
+
+                        map.setCenter(place.geometry.location);
+                        map.setZoom(15);
+                        marker.setPosition(place.geometry.location);
+                        locationInput.value = place.formatted_address;
+                        updateTable();
+                    });
+
+                    // Add click listener to map
+                    map.addListener('click', function(e) {
+                        marker.setPosition(e.latLng);
+                        
+                        // Reverse geocode to get address
+                        const geocoder = new google.maps.Geocoder();
+                        geocoder.geocode({ location: e.latLng }, (results, status) => {
+                            if (status === "OK" && results[0]) {
+                                locationInput.value = results[0].formatted_address;
+                                updateTable();
+                            }
+                        });
+                    });
+
+                    // Update location when marker is dragged
+                    marker.addListener('dragend', function() {
+                        const geocoder = new google.maps.Geocoder();
+                        geocoder.geocode({ location: marker.getPosition() }, (results, status) => {
+                            if (status === "OK" && results[0]) {
+                                locationInput.value = results[0].formatted_address;
+                                updateTable();
+                            }
+                        });
+                    });
+
+                } catch (error) {
+                    console.error('Error initializing map:', error);
+                    const mapDiv = document.getElementById('map');
+                    mapDiv.innerHTML = '<div class="alert alert-error">Error initializing Google Maps: ' + error.message + '</div>';
+                }
+            }
+
+            // Load Google Maps when the page loads
+            window.addEventListener('load', loadGoogleMapsScript);
+        </script>
+    </head>
 <body>
 
 
 <script>
 
 var subjectObject = {
-    	"Mumbai": {
-    		    
-    			 "Mumbai suburbs": ["Powai",
-    		    	"Ghatkopar",
-    		    	"Versova",
-    		    	"Andheri",
-    		    	"Goregaon",
-    		    	"Borivali"],
-    		    
-    		    "Mumbai Central": [
-    		    	"Mazgaon",
-    		    	"Dadar",
-    		    	"Byculla",
-    		    	"Mahalaxmi",
-    		    	"Malabar Hill",
-    		    	"Grant Road",
-    		    	"Tardeo"],
-                "Mumbai South": [
-    		    	"CST",
-    		    	"Colaba",
-    		    	"Fort",
-    		    	"Nariman Point"],
-    		  }
+    "Mumbai": {
+        "Andheri": ["Andheri East", "Andheri West"],
+        "Bandra": ["Bandra East", "Bandra West"],
+        "Borivali": ["Borivali East", "Borivali West"],
+        "Dadar": ["Dadar East", "Dadar West"],
+        "Goregaon": ["Goregaon East", "Goregaon West"],
+        "Juhu": ["Juhu Beach", "Juhu Scheme"],
+        "Kurla": ["Kurla East", "Kurla West"],
+        "Malad": ["Malad East", "Malad West"],
+        "Mulund": ["Mulund East", "Mulund West"],
+        "Thane": ["Thane East", "Thane West"]
     }
+};
       
 //       print data
 	fetch('http://localhost:8080/edms_demo/DataServlet')
@@ -130,25 +223,25 @@ var subjectObject = {
       window.onload = function()
       {
     	  const DistrictSelect = document.getElementById("DistrictSelect");
-    	  const UpazillaSelect = document.getElementById("UpazillaSelect");
-    	  const UnionSelect = document.getElementById("UnionSelect");
-    	  for(var x in subjectObject )
-    		  {
-    		   		DistrictSelect.options[DistrictSelect.options.length] = new Option(x,x);
-    		  }
+    	  const PlaceSelect = document.getElementById("PlaceSelect");
+    	  for (const district in subjectObject) {
+    		  DistrictSelect.options[DistrictSelect.options.length] = new Option(district, district);
+    	  }
     	  
     	  DistrictSelect.onchange = function()
     	  {
-    		  UpazillaSelect.length = 1;
-    		  UnionSelect.length = 1;
+    		  PlaceSelect.length = 1;
     		  
-    		  for(var y in subjectObject[this.value])
-    			  {
-    			  		UpazillaSelect.options[UpazillaSelect.options.length] = new Option(y,y);
+    		  const selectedDistrict = this.value;
+    		  const places = subjectObject[selectedDistrict];
+    		  if (places) {
+    			  for (const place of places) {
+    				  PlaceSelect.options[PlaceSelect.options.length] = new Option(place, place);
     			  }
+    		  }
     	  }
     	  
-    	  UpazillaSelect.onchange = function()
+    	  PlaceSelect.onchange = function()
     	  {
     		  UnionSelect.length = 1;
     		  
@@ -255,16 +348,17 @@ var subjectObject = {
 			</div>
 			
 			<div class="flex flex-col lg:flex-row justify-center items-center gap-2">	
-				<label class="Label" for="itemSelect"><span class="label-text font-bold text-orange-500">Upazilla :</span></label>
-                <select class="w-full lg:w-auto lg:grow select select-bordered" class ="dropbox" id="UpazillaSelect" name="Upazilaitem">                              
+				<label class="Label" for="itemSelect"><span class="label-text font-bold text-orange-500">Place :</span></label>
+                <select class="w-full lg:w-auto lg:grow select select-bordered" class ="dropbox" id="PlaceSelect" name="Placeitem">                              
                  	<option value="null">None</option>
                 </select>
 			</div>
 			<div class="flex flex-col lg:flex-row justify-center items-center gap-2">	
-				<label class="Label" for="itemSelect"><span class="label-text font-bold text-orange-500">Union/Ward :</span></label>
-                <select class="w-full lg:w-auto lg:grow select select-bordered" id="UnionSelect" name="Unionitem">
-                 	<option value="null">None </option>                                             
-                </select>
+				<label class="Label" for="locationInput"><span class="label-text font-bold text-orange-500">Disaster Location: </span></label>
+                <div class="w-full lg:w-auto lg:grow">
+                    <input type="text" id="locationInput" class="input input-bordered w-full" placeholder="Search for a location">
+                    <div id="map" class="w-full h-[300px] mt-2 rounded-lg shadow-lg"></div>
+                </div>
 			</div>
 		</div>
 		<!-- Table -->
@@ -279,14 +373,74 @@ var subjectObject = {
         
         <script>
         	const distComponent = document.getElementById("DistrictSelect");
-        	const upazComponent = document.getElementById("UpazillaSelect");
-        	const unionComponent = document.getElementById("UnionSelect");
+        	const upazComponent = document.getElementById("PlaceSelect");
+        	const locationInput = document.getElementById("locationInput");
+        	const map = document.getElementById("map");
+        	let autocomplete;
+        	let marker;
+        	let mapInstance;
 
-        	
+        	// Initialize Google Maps
+        	function initMap() {
+        		const defaultLocation = { lat: 19.0760, lng: 72.8777 }; // Mumbai coordinates
+        		mapInstance = new google.maps.Map(map, {
+        			zoom: 12,
+        			center: defaultLocation,
+                    styles: [
+                        {
+                            "featureType": "poi",
+                            "elementType": "labels",
+                            "stylers": [{"visibility": "off"}]
+                        }
+                    ]
+        		});
+
+        		marker = new google.maps.Marker({
+        			position: defaultLocation,
+        			map: mapInstance,
+                    title: "Selected Location"
+        		});
+
+        		autocomplete = new google.maps.places.Autocomplete(locationInput, {
+        			types: ['address'],
+                    componentRestrictions: { country: 'in' } // Restrict to India
+        		});
+
+        		autocomplete.addListener('place_changed', function() {
+        			const place = autocomplete.getPlace();
+        			if (place.geometry) {
+        				mapInstance.setCenter(place.geometry.location);
+        				mapInstance.setZoom(15);
+        				marker.setPosition(place.geometry.location);
+                        
+                        // Update the location input with the formatted address
+                        locationInput.value = place.formatted_address;
+                        
+                        // Trigger table update
+                        updateTable();
+        			}
+        		});
+
+                // Add click listener to map
+                mapInstance.addListener('click', function(e) {
+                    marker.setPosition(e.latLng);
+                    mapInstance.setCenter(e.latLng);
+                    
+                    // Reverse geocode to get address
+                    const geocoder = new google.maps.Geocoder();
+                    geocoder.geocode({ location: e.latLng }, (results, status) => {
+                        if (status === "OK") {
+                            locationInput.value = results[0].formatted_address;
+                            updateTable();
+                        }
+                    });
+                });
+        	}
+
         	function updateTable () {
         		const district = distComponent.options[distComponent.selectedIndex].text;
-        		const upazila = upazComponent.options[upazComponent.selectedIndex].text;
-        		const union = unionComponent.options[unionComponent.selectedIndex].text;
+        		const place = upazComponent.options[upazComponent.selectedIndex].text;
+        		const location = locationInput.value;
         		const verifiedIcon = `
         			<img src="IMAGES/badge-2.png" class="max-h-[30px] max-w[30px]]" />
         		`
@@ -315,11 +469,10 @@ var subjectObject = {
      				const upaList = data[5]
      				const unionList = data[6]
      				const userList = data[7]
-     				//console.log(verifiedList)
      				
-     				if(union !== 'None'){
+     				if(location !== ''){
      					for(let i=0; i<verifiedList.length; i++){
-     						if(unionList[i] === union){
+     						if(unionList[i].toLowerCase().includes(location.toLowerCase())){
      							new_table_data = new_table_data + '<tr  class="dat_tab hover:bg-slate-200" data-aos="fade-right">';
      							
      							if(verifiedList[i] == null) {				
@@ -347,9 +500,9 @@ var subjectObject = {
      						}
      					}
      				}
-     				else if(upazila !== 'None'){
+     				else if(place !== 'None'){
      					for(let i=0; i<verifiedList.length; i++){
-     						if(upaList[i] === upazila){
+     						if(upaList[i] === place){
      							new_table_data = new_table_data + '<tr  class="dat_tab hover:bg-slate-200 data-aos="fade-right"">';
      							
      							if(verifiedList[i] == null) {				
@@ -449,7 +602,7 @@ var subjectObject = {
 
         	distComponent.addEventListener('change', updateTable);
         	upazComponent.addEventListener('change', updateTable);
-        	unionComponent.addEventListener('change', updateTable);
+        	locationInput.addEventListener('input', updateTable);
         </script>
         <!-- Start of reference -->
 		<div class="p-6 m-6 flex flex-col justify-center items-center">

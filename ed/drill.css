@@ -1,0 +1,51 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f3f4f6; /* Light gray background */
+    color: #1f2937; /* Dark gray text */
+}
+
+h1 {
+    color: #f59e0b; /* Amber color for headings */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.bg-white {
+    background-color: #ffffff;
+}
+
+.p-1 {
+    padding: 10px;
+}
+
+.rounded {
+    border-radius: 8px;
+}
+
+.shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.text-md {
+    font-size: 1rem;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.mt-1 {
+    margin-top: 0.25rem;
+}

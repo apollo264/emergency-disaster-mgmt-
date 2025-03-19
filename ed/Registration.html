@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,234 +32,48 @@
 <script>
 
 var subjectObject = {
-    	"Sylhet": {
-    		    
-    			 "Companiganj": ["Islampur Paschim",
-    		    	"Ranikhali Uttar",
-    		    	"Telikhal",
-    		    	"Islampur Purba",
-    		    	"Ichhakalash",
-    		    	"Dakshin Ranikhai"],
-    		    
-    		    "Kanaighat": [
-    		    	"Bara Chatul",
-    		    	"Dakshin Banigram",
-    		    	"Jhingabari",
-    		    	"Kanaighat",
-    		    	"Paschim Laxmi Prasad",
-    		    	"Shatbank",
-    		    	"Purba Laxmi Prasad",
-    		    	"Purba Dighirpar",
-    		    	"Rajaganj"],
-    		    	
-    		    "Dakshin Surma": [
-    		    	"Baraikandi",
-    		    	"Daudpur",
-    		    	"Jalalpur",
-    		    	"Kuchai",
-    		    	"Lal Bazar",
-    		    	"Mogal Bazar",
-    		    	"Mollargaon",
-    		    	"Silam",
-    		    	"Tetli"],
-    		    "Zakiganj": [
-    		    	"Barahal",
-    		    	"Bara Thakuri",
-    		    	"Birasree",
-    		    	"Kas Kanakpur",
-    		    	"Kajalshah",
-    		    	"Kholachhara",
-    		    	"Manikpur",
-    		    	"Sultanpur",
-    		    	"Zakiganj"],
-    		    "Sylhet Sadar": [
-    		    	"Hatkhola",
-    		    	"Jalalabad",
-    		    	"Kandigaon",
-    		    	"Khadimnagar",
-    		    	"Khadim Para",
-    		    	"Mogalgaon",
-    		    	"Tuker Bazar",
-    		    	"Tultikar"],
-    		    "Jointiapur": [
-    		    	"Charikata",
-    		    	"Darbasta",
-    		    	"Fatehpur",
-    		    	"Jointapur",
-    		    	"Nijpat",
-    		    	"Chikangul"],
-     			 "Gowainghat": [
-     				 "Alirgaon",
-     				"Fatehpur",
-     				"Lengura",
-     				"Nandirgaon",
-     				"Paschim Jaflong",
-     				"Purba Jaflong",
-     				"Rustampur",
-     				"Towakul",], 
-    		    "Fenchuganj": [
-    		    	"Fenchuganj",
-    		    	"Gilachhara",
-    		    	"Maijgaon"], 
-     			 "Biswanath": [
-     				 "Alankari",
-     				"Bishwanath",
-     				"Daulatpur",
-     				"Deokalas",
-     				"Dasghar",
-     				"Khazanchi",
-     				"Lama Kazi",
-     				"Rampasha"], 
-    		    "Beanibazar": [
-    		    	"Alinagar",
-    		    	"Mollahpur",
-    		    	"Charkhai",
-    		    	"Dubag",
-    		    	"Kurar Bazar",
-    		    	"Lauta",
-    		    	"Mathiura",
-    		    	"Muria",
-    		    	"Sheola",
-    		    	"Tilpara"], 
-     			 "Balaganj": [
-     				 "Balaganj",
-     				"Boaljur",
-     				"Buronga Bazar",
-     				"Dayamir",
-     				"Dewan Bazar",
-     				"Goal Bazar",
-     				"Omarpur",
-     				"Osmanpur",
-     				"Pashchim Gauripur",
-     				"Purba Pawlanpur",
-     				"Purba Gauripur",
-     				"Sadipur",
-     				"Tajpur",
-     				"Pashchim Pawlanpur"], 
-      			"Golapganj": [
-      				"Paschim Amura",
-      				"Bagha",
-      				"Bhadeshwar",
-      				"Badhubari",
-      				"Dhaka Dakshin",
-      				"Fulbari",
-      				"Golabganj",
-      				"Laxmi Pasha",
-      				"Sharifganj",
-      				"Lakshanaband",
-      				"Uttar Bade Pasha"]
-      
-    		  },
-   "Moulvibazar": {
-	  
-    		  "Kulaura": [
-    			  "Baramchal",
-    			  "Bhatera",
-    			  "Bhakshimail",
-    			  "Bramhan Bazar",
-    			  "Hajipur",
-    			  "Joychandi",
-    			  "Kadirpur",
-    			  "Karmadha",
-    			  "Kulaura",
-    			  "Prithempasha",
-    			  "Routhgaon",
-    			  "Sharifpur",
-    			  "Tilagaon"],
-    		    "Kamalganj": [
-    		    	"Adampur",
-    		    	"Alinagar",
-    		    	"Islampur",
-    		    	"Kamalganj",
-    		    	"Madhabpur",
-    		    	"Munshi Bazar",
-    		    	"Patanushar",
-    		    	"Rahimpur",
-    		    	"Shamshernagar"],
-    		     "Moulvibazar Sadar": [
-    		    	 "Akhailkura",
-    		    	 "Amtail",
-    		    	 "Chandnighat",
-    		    	 "Ekatuna",
-    		    	 "Giasnagar",
-    		    	 "Kamalpur",
-    		    	 "Kanakpur",
-    		    	 "Khalilpur",
-    		    	 "Manumukh",
-    		    	 "Mostafapur",
-    		    	 "Nazirabad",
-    		    	 "Kagabala"],
-    		     "Rajnagar": [
-    		    	 "Fatehpur",
-    		    	 "Kamar Chak",
-    		    	 "Mansurnagar",
-    		    	 "Munshi Bazar",
-    		    	 "Panchgaon",
-    		    	 "Rajnagar",
-    		    	 "Tengra",
-    		    	 "Uttarbhag"],
-    		     "Sreemangal": [
-    		    	 "Ashidron",
-    		    	 "Bhunabir",
-    		    	 "Kashipur",
-    		    	 "Kalighat",
-    		    	 "Mirzapur",
-    		    	 "Rajghat",
-    		    	 "Satgoan",
-    		    	 "Sindurkhan",
-    		    	 "Sreemangal"],
-    		     "Juri": [
-    		    	 "Paschim Juri",
-    		    	 "Purba Juri",
-    		    	 "Fultala",
-    		    	 "Goalbari",
-    		    	 "Jaifarnagar",
-    		    	 "Sagarnal"],
-    		     "Barlekha": [
-    		    	 "Baralekha",
-    		    	 "Barni",
-    		    	 "Dakshin Shahabajpur",
-    		    	 "Dakshin Dakshinbhagh",
-    		    	 "Dasher Bazar",
-    		    	 "Nij Bahadurpur",
-    		    	 "Sujanagar",
-    		    	 "Uttar Dakshinbhag",
-    		    	 "Uttar Shahabajpur",
-    		    	 "Talimpur"]
-    		  }
+    "Mumbai": {
+        "Andheri": ["Andheri East", "Andheri West"],
+        "Bandra": ["Bandra East", "Bandra West"],
+        "Borivali": ["Borivali East", "Borivali West"],
+        "Dadar": ["Dadar East", "Dadar West"],
+        "Goregaon": ["Goregaon East", "Goregaon West"],
+        "Juhu": ["Juhu Beach", "Juhu Scheme"],
+        "Kurla": ["Kurla East", "Kurla West"],
+        "Malad": ["Malad East", "Malad West"],
+        "Mulund": ["Mulund East", "Mulund West"],
+        "Thane": ["Thane East", "Thane West"]
     }
+};
       
       
       window.onload = function()
       {
     	  var DistrictSelect = document.getElementById("DistrictSelectS");
     	  var UpazillaSelect = document.getElementById("UpazillaSelectS");
-    	  var UnionSelect = document.getElementById("UnionSelectS");
-    	  for(var x in subjectObject )
-    		  {
-    		   		DistrictSelect.options[DistrictSelect.options.length] = new Option(x,x);
-    		  }
+    	  
+    	  for (var district in subjectObject) {
+    		  DistrictSelect.options[DistrictSelect.options.length] = new Option(district, district);
+    	  }
     	  
     	  DistrictSelect.onchange = function()
     	  {
     		  UpazillaSelect.length = 1;
-    		  UnionSelect.length = 1;
-    		  
-    		  for(var y in subjectObject[this.value])
-    			  {
-    			  		UpazillaSelect.options[UpazillaSelect.options.length] = new Option(y,y);
-    			  }
+    		  var selectedDistrict = this.value;
+    		  var places = subjectObject[selectedDistrict];
+    		  for (var place in places) {
+    			  UpazillaSelect.options[UpazillaSelect.options.length] = new Option(place, place);
+    		  }
     	  }
     	  
     	  UpazillaSelect.onchange = function()
     	  {
-    		  UnionSelect.length = 1;
-    		  
-    		  var z = subjectObject[DistrictSelect.value][this.value];
-    		  for(var i =0;i<z.length;i++)
-    			  {
-    			  		UnionSelect.options[UnionSelect.options.length] = new Option(z[i],z[i]);
-    			  }
+    		  var selectedPlace = this.value;
+    		  var placeOptions = subjectObject[DistrictSelect.value][selectedPlace];
+    		  UpazillaSelect.length = 1;
+    		  for (var i = 0; i < placeOptions.length; i++) {
+    			  UpazillaSelect.options[UpazillaSelect.options.length] = new Option(placeOptions[i], placeOptions[i]);
+    		  }
     		  
     	  }
     	  
@@ -355,17 +167,15 @@ var subjectObject = {
 					    });
 					</script>
                 
-			   <%
-			   String selectedDistrict = request.getParameter("jsValue");%>
+			   <% String selectedDistrict = request.getParameter("jsValue");%>
 			   <input type="hidden" name="selectedDistrict" value="<%= selectedDistrict %>">
             
-            <!-- select upazila -->
+            <!-- select place -->
             <label class="label">
-              <span class="label-text">Select Upazilla</span>
+              <span class="label-text">Select Place</span>
             </label>
-            <select id="UpazillaSelectS"class="select select-bordered w-full"name="Upazilaitem" required>
-              <option disabled selected>Add Upazilla</option>
-              
+            <select id="UpazillaSelectS" class="select select-bordered w-full" name="Placeitem" required>
+              <option disabled selected>Add Place</option>
             </select>
             
             <!-- Select Upazilla js -->
@@ -396,59 +206,6 @@ var subjectObject = {
 		             <input type="hidden" name="selectedUpazilla" value="<%= selectedUpazilla %>">
             
             
-            <!-- select union -->
-            <label class="label">
-              <span class="label-text">Select Union</span>
-            </label>
-            <select id="UnionSelectS"class="select select-bordered w-full"name="Unionitem" required>
-              <option disabled selected>Add Union</option>
-              
-            </select>
-            
-            <script>
-            	const unionSelectDropDown = document.getElementById('UnionSelectS')
-            	unionSelectDropDown.addEventListener('change', function(){
-            		document.getElementById('selectedUnionHiddenBox').value = unionSelectDropDown.options[unionSelectDropDown.selectedIndex].text
-            	})
-            </script>
-            
-            <!-- select Union js -->
-            <script>
-					     document.getElementById("UnionSelectS").addEventListener("change", function() {
-					        var selectElement = document.getElementById("UnionSelectS");
-					        var selectOption = selectElement.options[selectElement.selectedIndex];
-					        
-					        var selectedText = selectOption.text;
-					        
-					        // Use AJAX to send selectedText to server
-					        fetch("Registration.html?UnionValue=" + encodeURIComponent(selectedText))
-					        .then(response => response.text())
-					        .then(data => {
-					            console.log(data); // Log the response from the server
-					        })
-					        .catch(error => {
-					            console.error("Error:", error);
-					        });
-					    });
-					     
-					</script>
-					
-					<%
-						    
-			                String selectedUnion = request.getParameter("UnionValue");
-					
-						/* String aise="null";
-						
-						if(aise=="null"&& selectedUnion!=null){
-						
-					 PreparedStatement ps=con.prepareStatement("insert into setloc(Location)values(?)");
-					 ps.setString(1,selectedUnion);
-					 ps.executeUpdate();
-						
-						} */
-					%>
-            
-			<input type="hidden" name="selectedUnion" id="selectedUnionHiddenBox" value="selectedUnion">
             <!-- contact no -->
             <label class="label">
               <span class="label-text">Mobile No.</span>
