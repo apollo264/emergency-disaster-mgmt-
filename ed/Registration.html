@@ -54,7 +54,7 @@ var subjectObject = {
     	  
     	  for (var district in subjectObject) {
     		  DistrictSelect.options[DistrictSelect.options.length] = new Option(district, district);
-    	  }
+    		  }
     	  
     	  DistrictSelect.onchange = function()
     	  {
@@ -63,7 +63,7 @@ var subjectObject = {
     		  var places = subjectObject[selectedDistrict];
     		  for (var place in places) {
     			  UpazillaSelect.options[UpazillaSelect.options.length] = new Option(place, place);
-    		  }
+    			  }
     	  }
     	  
     	  UpazillaSelect.onchange = function()
@@ -73,7 +73,7 @@ var subjectObject = {
     		  UpazillaSelect.length = 1;
     		  for (var i = 0; i < placeOptions.length; i++) {
     			  UpazillaSelect.options[UpazillaSelect.options.length] = new Option(placeOptions[i], placeOptions[i]);
-    		  }
+    			  }
     		  
     	  }
     	  

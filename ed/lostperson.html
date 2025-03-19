@@ -91,6 +91,7 @@
             <a href="Social.html" class="text-black hover:text-white">Social</a>
             <a href="Faq.html" class="text-black hover:text-white">FAQ</a>
             <a href="lostperson.html" class="text-black hover:text-white">Lost Person Registry</a>
+            <a href="drill.html" class="text-black hover:text-white">Drills & Precautions</a>
         </div>
         <div class="lg:hidden">
             <button onclick="toggleMenu()" class="text-white text-2xl"><i class="fas fa-bars"></i></button>
@@ -104,6 +105,7 @@
         <a href="Social.html" class="block text-black py-2">Social</a>
         <a href="Faq.html" class="block text-black py-2">FAQ</a>
         <a href="lostperson.html" class="block text-black py-2">Lost Person Registry</a>
+        <a href="drill.html" class="block text-black py-2">Drills & Precautions</a>
     </div>
 
     <h1>Lost Person Registry</h1>
@@ -125,12 +127,9 @@
         <label for="photo">Upload Photo:</label>
         <input type="file" id="photo" accept="image/*">
         
-<<<<<<< Updated upstream
-=======
         <label for="contact">Contact Number:</label>
         <input type="tel" id="contact" required>
         
->>>>>>> Stashed changes
         <button type="button" onclick="addEntry()">Submit</button>
     </form>
 
@@ -143,10 +142,7 @@
                 <th>Last Seen Location</th>
                 <th>Description</th>
                 <th>Photo</th>
-<<<<<<< Updated upstream
-=======
                 <th>Contact Number</th>
->>>>>>> Stashed changes
             </tr>
         </thead>
         <tbody></tbody>
@@ -168,10 +164,9 @@
             const location = document.getElementById("location").value;
             const description = document.getElementById("description").value;
             const photoInput = document.getElementById("photo");
-<<<<<<< Updated upstream
-=======
+
             const contact = document.getElementById("contact").value;
->>>>>>> Stashed changes
+
             
             row.insertCell(0).innerText = name;
             row.insertCell(1).innerText = age;
@@ -189,19 +184,14 @@
                 photoCell.innerText = "No image";
             }
 
-<<<<<<< Updated upstream
-=======
             row.insertCell(5).innerText = contact;
 
->>>>>>> Stashed changes
             // Reset form
             document.getElementById("registryForm").reset();
         }
     </script>
 
 </body>
-<<<<<<< Updated upstream
+
 </html>
-=======
-</html>
->>>>>>> Stashed changes
+

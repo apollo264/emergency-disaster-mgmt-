@@ -133,7 +133,7 @@
 <script>
 
 var subjectObject = {
-    "Mumbai": {
+    	"Mumbai": {
         "Andheri": ["Andheri East", "Andheri West"],
         "Bandra": ["Bandra East", "Bandra West"],
         "Borivali": ["Borivali East", "Borivali West"],
@@ -226,7 +226,7 @@ var subjectObject = {
     	  const PlaceSelect = document.getElementById("PlaceSelect");
     	  for (const district in subjectObject) {
     		  DistrictSelect.options[DistrictSelect.options.length] = new Option(district, district);
-    	  }
+    		  }
     	  
     	  DistrictSelect.onchange = function()
     	  {
@@ -436,7 +436,7 @@ var subjectObject = {
                     });
                 });
         	}
-
+        	
         	function updateTable () {
         		const district = distComponent.options[distComponent.selectedIndex].text;
         		const place = upazComponent.options[upazComponent.selectedIndex].text;
