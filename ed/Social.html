@@ -115,128 +115,70 @@
         <!-- All posts below -->
         <div class="flex flex-col gap-5 overflow-hidden">
             
-            
-            <!-- TODO: Start for loop here -->
-            
-        <%    
-        for(int i=0;i<Date.size();i++)
-        {    
-          
-        %>
+            <!-- Start for loop here -->
+            <% for(int i=0; i<Date.size(); i++) { %>
 
-            <div data-aos="fade-right" class="bg-[#d9d9d9] p-3 md:p-5 rounded-xl">
-                <div class="flex flex-col md:flex-row gap-3 justify-between">
-                    <div class="flex gap-3">
-                        <!-- TODO: if verified then show badge -->
-                        <%
-                        if(Verified.get(i)!=null)
-                        {
-                        %>
-                        
-                        <img class="h-full w-auto" src="IMAGES/badge-2.png" alt="verified">
-                        
-                       <%} %>
-                       
+            <div data-aos="fade-right" class="bg-[#d9d9d9] p-5 md:p-6 rounded-xl">
+                <div class="flex flex-col md:flex-row gap-4 justify-between">
+                    <div class="flex gap-4">
+                        <% if(Verified.get(i) != null) { %>
+                        <img class="h-full w-auto" src="IMAGES/badge-2.png" alt="verified badge">
+                        <% } %>
                         <div>
-                        <% 
-                       if(Affected.get(i)!=-1) 
-                       {
-                        %>
-                            <h1 class="text-[16px] font-bold"><a href="Location_Profile.html?LocationUsernameFromShelterPage=<%=Username.get(i)%>"><%=Name.get(i)%></a> </h1>
-                         
-                     <% } %>
-                     
-                      <% 
-                     if(Affected.get(i)==-1) 
-                       {
-                        %>
-                            <h1 class="text-[16px] font-bold">  <a href ="People_Profile.html?PeopleUsernameFromSocialPage=<%=Username.get(i)%>"> <%=Name.get(i) %></a>  </h1>
-                         
-                     <% } %>
-                            
-                            <h3 class="text-[15px]"><%=Date.get(i)%></h3>
+                            <% if(Affected.get(i) != -1) { %>
+                            <h1 class="text-[18px] font-bold"><a href="Location_Profile.html?LocationUsernameFromShelterPage=<%=Username.get(i)%>"><%=Name.get(i)%></a></h1>
+                            <% } else { %>
+                            <h1 class="text-[18px] font-bold"><a href="People_Profile.html?PeopleUsernameFromSocialPage=<%=Username.get(i)%>"><%=Name.get(i)%></a></h1>
+                            <% } %>
+                            <h3 class="text-[16px]"><%=Date.get(i)%></h3>
                         </div>
                     </div>
-                    <!-- TODO: implement conditional rendering -->
-                    
-                    <% 
-                    if(Affected.get(i)!=-1) 
-                    {
-                    %>       
+                    <% if(Affected.get(i) != -1) { %>
                     <div class="badge badge-ghost text-[18px] p-3 border-1 border-black">Affected People: <%=Affected.get(i)%></div>
-           
-                    <%} %>
-                    
-                    
+                    <% } %>
                 </div>
-                <div class="my-2 text-[15px] flex gap-1 items-center">
+                <div class="my-2 text-[16px] flex gap-2 items-center">
                     <i class="fa-solid fa-location-dot"></i>
                     <div class="badge badge-ghost"><%=Unionn.get(i)%></div>
                     <div class="badge badge-ghost"><%=Upazila.get(i)%></div>
                     <div class="badge badge-ghost"><%=District.get(i)%></div>
                 </div>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                    <div class="grid grid-cols-2 lg:flex gap-2">
-                    
-                  
-                  
-                    <%  String take1 = "img_modal_"+i+"_1.showModal()"; %>
-                        <img onclick=<%=take1%>
-                            class="center-cropped max-h-[200px] cursor-pointer lg:w-[50%] rounded-xl w-full"
-                            src=<%=PostPhoto1.get(i)%> alt="">
-                        <!-- image-1 modal -->
-                        <%  String take2 = "img_modal_"+i+"_1"; %>
-                        
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-2 lg:flex gap-3">
+                        <% String take1 = "img_modal_"+i+"_1.showModal()"; %>
+                        <img onclick=<%=take1%> class="center-cropped max-h-[200px] cursor-pointer lg:w-[50%] rounded-xl w-full" src=<%=PostPhoto1.get(i)%> alt="Post Image 1">
+                        <% String take2 = "img_modal_"+i+"_1"; %>
                         <dialog id=<%=take2%> class="modal w-[100vw]">
                             <div class="modal-box max-w-[90vw] w-full lg:w-auto">
                                 <form method="dialog">
                                     <button class="btn btn-sm btn-circle btn-error text-white absolute right-2 top-2">X</button>
                                 </form>
                                 <div class="flex justify-center items-center">
-                                    <img class="rounded-xl" src=<%=PostPhoto1.get(i)%> alt="">
+                                    <img class="rounded-xl" src=<%=PostPhoto1.get(i)%> alt="Post Image 1">
                                 </div>
                             </div>
                         </dialog>
-                        
-                           <%  String take3 = "img_modal_"+i+"_2.showModal()"; %>
-                        <img onclick=<%=take3%>
-                            class="center-cropped max-h-[200px] cursor-pointer lg:w-[50%] rounded-xl w-full"
-                            src=<%=PostPhoto2.get(i)%> alt="">
-                        <!-- image-1 modal -->
-                        <%  String take4 = "img_modal_"+i+"_2"; %>
-                        
+                        <% String take3 = "img_modal_"+i+"_2.showModal()"; %>
+                        <img onclick=<%=take3%> class="center-cropped max-h-[200px] cursor-pointer lg:w-[50%] rounded-xl w-full" src=<%=PostPhoto2.get(i)%> alt="Post Image 2">
+                        <% String take4 = "img_modal_"+i+"_2"; %>
                         <dialog id=<%=take4%> class="modal w-[100vw]">
                             <div class="modal-box max-w-[90vw] w-full lg:w-auto">
                                 <form method="dialog">
                                     <button class="btn btn-sm btn-circle btn-error text-white absolute right-2 top-2">X</button>
                                 </form>
                                 <div class="flex justify-center items-center">
-                                    <img class="rounded-xl" src=<%=PostPhoto2.get(i)%> alt="">
+                                    <img class="rounded-xl" src=<%=PostPhoto2.get(i)%> alt="Post Image 2">
                                 </div>
                             </div>
                         </dialog>
-                        
                     </div>
-
                     <div class="post-description flex flex-col justify-between">
-                        
-                        <!-- show 30 words -->
-                        
-                        <%  PrintCharacter PCobj = new PrintCharacter(); %>
-                        
+                        <% PrintCharacter PCobj = new PrintCharacter(); %>
                         <p><%=PCobj.Print_200_Characters(Description.get(i))%></p>
-                    
                         <div class="flex justify-end items-center">
-                        
-                           <% String take5 = "show_more_modal_"+i+".showModal()";%>
-                           
-                            <span onclick=<%=take5%>
-                                class="px-3 py-2 bg-[#F2F2F2] rounded-xl cursor-pointer hover:bg-[#E5E5E5]">See
-                                more</span>
-                            <!-- See More Modal -->
-                            
+                            <% String take5 = "show_more_modal_"+i+".showModal()";%>
+                            <span onclick=<%=take5%> class="px-4 py-2 bg-[#F2F2F2] rounded-xl cursor-pointer hover:bg-[#E5E5E5]">See more</span>
                             <% String take6 = "show_more_modal_"+i; %>
-                            
                             <dialog id=<%=take6%> class="modal w-[100vw] h-[100vh]">
                                 <div class="modal-box max-w-[90vw] max-h-[70vh] w-full h-auto lg:w-auto">
                                     <form method="dialog">
@@ -249,16 +191,34 @@
                     </div>
                 </div>
             </div>
-            
-            
-            
             <% } %>
-
-
         </div>
 
     </div>
     <!-- End of Posts section -->
+
+    <!-- Start of Upload Form -->
+    <div class="my-container my-6">
+        <h2 class="text-xl font-bold text-[#F17829] sm:text-2xl text-center my-3">Upload Affected Area Details</h2>
+        <form id="uploadForm" class="bg-[#d9d9d9] p-5 rounded-xl">
+            <label for="location" class="text-[15px] font-semibold">Location:</label>
+            <input type="text" id="location" class="p-2 rounded border w-full mb-3" placeholder="Enter location" required>
+
+            <label for="date" class="text-[15px] font-semibold">Date:</label>
+            <input type="date" id="date" class="p-2 rounded border w-full mb-3" required>
+
+            <label for="time" class="text-[15px] font-semibold">Time:</label>
+            <input type="time" id="time" class="p-2 rounded border w-full mb-3" required>
+
+            <label for="image" class="text-[15px] font-semibold">Upload Image:</label>
+            <input type="file" id="image" class="p-2 rounded border w-full mb-3" accept="image/*" required onchange="previewImage(event)">
+
+            <img id="imagePreview" style="display:none; max-width:100%; margin-top:10px;" />
+
+            <button type="submit" class="bg-[#F17829] text-white py-2 px-4 rounded hover:bg-[#E5E5E5] transition duration-300">Submit</button>
+        </form>
+    </div>
+    <!-- End of Upload Form -->
 
     <!-- Start of Footer -->
     <div class='flex justify-between gap-0'>
@@ -292,6 +252,18 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();
+    </script>
+
+    <script>
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const output = document.getElementById('imagePreview');
+                output.src = reader.result;
+                output.style.display = 'block';
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
     </script>
 
 

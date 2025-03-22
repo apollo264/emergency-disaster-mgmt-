@@ -10,7 +10,7 @@
 }
 
 .my-container {
-    max-width: 2520px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 16px;
@@ -20,8 +20,35 @@
 .center-cropped {
     object-fit: cover;
     object-position: center;
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 100%;
+}
+
+h1, h2 {
+    color: #F17829;
+}
+
+.badge {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+button {
+    background-color: #F17829;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #E5E5E5;
+    color: #333;
 }
 
 /* breakpoint for small size screen */
